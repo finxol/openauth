@@ -201,7 +201,6 @@ import { getRelativeUrl, isDomainMatch, lazy } from "./util.js"
 import { DynamoStorage } from "./storage/dynamo.js"
 import { MemoryStorage } from "./storage/memory.js"
 import { cors } from "hono/cors"
-import { logger } from "hono/logger"
 import { createMiddleware } from "hono/factory"
 
 /** @internal */
@@ -771,7 +770,7 @@ export function issuer<
     Variables: {
       authorization: AuthorizationState
     }
-  }>().use(logger())
+  }>()
 
   // Only edit local redirects if baseP
   if (basePath) {
